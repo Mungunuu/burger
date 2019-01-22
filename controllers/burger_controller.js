@@ -12,7 +12,7 @@ const ORM = require('../config/orm')
  *  */
 
 module.exports = function (app) {
-  app.get('/', function (req, res) {
+  app.get('/index', function (req, res) {
     burger.all()
       .then(function (data) {
         res.render('index', {burgers: data})
