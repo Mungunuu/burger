@@ -1,12 +1,14 @@
-const connection = require('../config/connection')
+const connection = require('./connection.js')
 
 function ORM (table) {
+  console.log('It is in ORM')
   this.table = table
 
   this.all = function () {
-    const sql = `SELECT * FROM burgers`
+    const sql = `SELECT * FROM ??`
 
     return new Promise(function (resolve, reject) {
+      console.log('connection test' + connection)
       connection.query(sql, table, function (err, data) {
         if (err) reject(err)
         resolve(data)
@@ -18,7 +20,7 @@ function ORM (table) {
     const sql = `INSERT INTO burgers (burger_name, devoured) VALUES (?,?)`
 
     return new Promise(function (resolve, reject) {
-      connection.query(sql, [table, burger_name, devoured], function (err, data) {
+      connection.query(sql, [burger_name, devoured], function (err, data) {
         if (err) reject(err)
         resolve(data)
       })

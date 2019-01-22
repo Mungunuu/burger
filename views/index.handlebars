@@ -1,4 +1,15 @@
-<div class = "container">
+<div class="container">
     <h1> Eat Da Burger! </h1>
-    
+    <ul>
+        {{#each burgers}}
+        {{> burgers/burger-block}}
+        {{/each}}
+    </ul>
+    <form class="create-form">
+        <div class="form-group">
+            <input type="text" id="burger-input" class="form-control-lg"
+                name="burger_name">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
 </div>

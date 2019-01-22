@@ -12,7 +12,7 @@ app.use(express.json())
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
-// require('./router')
+require('./controllers/burger_controller')(app)
 
 app.listen(PORT, function () {
   console.log(`Server listening on: http://localhost: ${PORT}`)
