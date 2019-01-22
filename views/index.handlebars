@@ -1,15 +1,36 @@
 <div class="container">
     <h1> Eat Da Burger! </h1>
-    <ul>
-        {{#each burgers}}
-        {{> burgers/burger-block}}
-        {{/each}}
-    </ul>
-    <form class="create-form">
-        <div class="form-group">
-            <input type="text" id="burger-input" class="form-control-lg"
-                name="burger_name">
+    <div class="row">
+        <div class="column">
+            <div class="all-burgers">
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{> burgers/burger-block devoured=false}}
+                {{/unless}}
+                {{/each}}
+            </div>
         </div>
-        <button type="submit">Submit</button>
-    </form>
+        <div class="column">
+
+            <form class="create-form">
+                <div class="form-group">
+                    <input type="text" id="burger-input" class="form-control-lg"
+                        name="burger_name">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="column">
+
+            <div class="devoured-burger">
+                {{#each burgers}}
+                {{#if devoured}}
+                {{> burgers/devouredburger-block devoured=true}}
+                {{/if}}
+                {{/each}}
+
+            </div>
+        </div>
+
+    </div>
 </div>

@@ -3,6 +3,14 @@ const burger = require('../models/burger')
 const connection = require('../config/connection')
 const ORM = require('../config/orm')
 
+/** 
+ * HTTP Status Codes:
+ * 200 - Ok
+ * 404 - Not Found
+ * 500 - Internal Server Error
+ * 400 - Bad Request
+ *  */
+
 module.exports = function (app) {
   app.get('/', function (req, res) {
     burger.all()
@@ -25,13 +33,15 @@ module.exports = function (app) {
   })
 
   app.put('/api/burgers/:id', function (req, res) {
-    let devoured = (req.body.devoured == 'true')
-    burger.update(devoured, req.params.id)
+    console.log(req.params.id)
+    burger.update(true, req.params.id)
       .then(function (data) {
         if (data.changedRows == 0) {
           // If no rows were changed, then the ID must not exist, so 404
+          // 404 - Http Status NOT_FOUND
           return res.status(404).end()
         } else {
+          // 200 - Http Status OK
           res.status(200).end()
         }
       })

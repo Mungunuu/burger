@@ -1,0 +1,32 @@
+body {
+  max-width: 960px;
+  /* background-image: url('https://assets.epicurious.com/photos/5580664481ac1e502367643f/2:1/w_1260%2Ch_630/56389654_double-rl-ranch-burger_1x1.jpg') */
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+  font-family: fantasy;
+}
+
+.column {
+  font-family: cursive;
+  float: left;
+  width: 33%;
+  text-align: left;
+  padding-bottom: 30px;
+  border: 1px solid blue;
+  text-align: center;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

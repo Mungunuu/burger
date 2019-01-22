@@ -31,11 +31,14 @@ function ORM (table) {
     const sql = `UPDATE burgers SET devoured = ? WHERE id = ?`
 
     return new Promise(function (resolve, reject) {
-      connection.query(sql, [table, devoured, id], function (err, data) {
+      console.log(devoured)
+      connection.query(sql, [devoured, id], function (err, data) {
         if (err) reject(err)
+        console.log(data)
         resolve(data)
       })
     })
   }
 }
+
 module.exports = ORM
